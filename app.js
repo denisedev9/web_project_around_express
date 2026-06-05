@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
 
-mongoose.connect('mongodb+srv://admin:denise1@cluster0.45k7rwa.mongodb.net/aroundb?appName=Cluster0');
+const databaseUrl = process.env.MONGO_URI || 'mongodb://localhost:27017/aroundb';
+
+mongoose.connect(databaseUrl);
 
 app.use(express.json());
 
